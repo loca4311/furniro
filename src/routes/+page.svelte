@@ -2,8 +2,6 @@
 	import { isLocalLoaded } from '$lib/i18n';
 	import { date, number, t, locale, locales, dictionary } from 'svelte-i18n';
 
-	console.log($dictionary);
-
 	let value: string = 'en';
 	function handleLocaleChange(event: Event) {
 		event.preventDefault();
@@ -17,7 +15,7 @@
 
 <div class="container">
 	{#if $isLocalLoaded}
-		<h1>{$t('heading')}</h1>
+		<h1 class=" text-green-400">{$t('heading')}</h1>
 		<span>{$t('toggle_label')}</span>
 		<select name="lang" id="lang" {value} on:change={handleLocaleChange}>
 			{#each $locales as locale, i}
