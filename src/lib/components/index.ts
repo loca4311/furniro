@@ -1,0 +1,11 @@
+export { default as Header } from './Header/Header.svelte';
+export { default as Footer } from './Footer.svelte';
+export { default as Container } from './Container.svelte';
+export { default as Logo } from './Header/Logo.svelte';
+export { default as BurgerLink } from './Header/BurgerLink.svelte';
+export { default as Navigation } from './Header/Navigation.svelte';
+export { default as Cart } from './Cart/Cart.svelte';
+export { default as Products } from './Products/Products.svelte';
+export { default as ProductsItem } from './Products/ProductsItem.svelte';
+export { default as Slider } from './Slider/Slider.svelte';
+export { default as SliderItem } from './Slider/SliderItem.svelte';
