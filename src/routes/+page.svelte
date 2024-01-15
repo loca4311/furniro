@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { date, number, t, locale, locales, dictionary } from 'svelte-i18n';
 	import { isLocalLoaded } from '$lib/i18n';
-	import { Hero, OurProducts, Range, Rooms, ShareSetup, TestForm } from '$lib/pages';
+	import { Hero, OurProducts, Range, Rooms, ShareSetup } from '$lib/pages';
 
 	let lang: string = 'en';
 	function handleLocaleChange(event: Event) {
