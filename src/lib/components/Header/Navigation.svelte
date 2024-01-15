@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { EPages } from '$lib/types';
 	import { t } from 'svelte-i18n';
-	import { BurgerLink } from '$lib/components';
+	import { TextLink, NavigationItem } from '$lib/components';
 	import { clickOutside } from '$lib/directives/clickOutside';
 
 	let isOpen = false;
@@ -11,9 +11,8 @@
 	<div
 		class="
       absolute top-0 left-0 -z-10 h-full w-full min-h-screen pt-[4.75rem] px-[1.375rem]
-      duration-500 ease-in-out
       md:left-[50%] md:top-0 md:translate-x-[-50%] md:w-auto md:p-0 md:z-10 md:min-h-[100px] md:flex md:justify-center md:items-center
-       {isOpen ? 'block' : 'hide'} 
+       {isOpen ? '!translate-x-0' : 'translate-x-[120%]'} 
     "
 	>
 		<div
@@ -23,7 +22,7 @@
       opacity-0 transition-opacity
       z-1
       md:hidden
-      {isOpen ? '!opacity-100' : 'opacity-0'} 
+      {isOpen ? '!opacity-100 !translate-x-0' : 'opacity-0 translate-x-[120%]'} 
     "
 		></div>
 		<ul
@@ -31,15 +30,24 @@
       bg-white p-4 ml-auto flex rounded-2xl max-w-[380px]
         flex-col justify-center items-center
         translate-x-[120%] z-50
+				text-center
         transition duration-500 ease-in-out
         md:translate-x-0 md:flex-row md:p-0
-        {isOpen ? '!translate-x-0 ' : ''} 
+        {isOpen ? '!translate-x-0' : ''} 
       "
 		>
-			<BurgerLink href={EPages.HOME}>{$t('navigation.home')}</BurgerLink>
-			<BurgerLink href={EPages.SHOP}>{$t('navigation.shop')}</BurgerLink>
-			<BurgerLink href={EPages.ABOUT}>{$t('navigation.about')}</BurgerLink>
-			<BurgerLink href={EPages.CONTACT}>{$t('navigation.contact')}</BurgerLink>
+			<NavigationItem>
+				<TextLink href={EPages.HOME}>{$t('navigation.home')}</TextLink>
+			</NavigationItem>
+			<NavigationItem>
+				<TextLink href={EPages.SHOP}>{$t('navigation.shop')}</TextLink>
+			</NavigationItem>
+			<NavigationItem>
+				<TextLink href={EPages.ABOUT}>{$t('navigation.about')}</TextLink>
+			</NavigationItem>
+			<NavigationItem>
+				<TextLink href={EPages.CONTACT}>{$t('navigation.contact')}</TextLink>
+			</NavigationItem>
 		</ul>
 	</div>
 	<button

@@ -5,7 +5,7 @@
 
 <div class="relative flex flex-col min-h-screen">
 	<Header />
-	<main class="pt-[100px]">
+	<main class="pt-[3.75rem] md:pt-[6.25rem]">
 		<slot />
 	</main>
 	<Footer />

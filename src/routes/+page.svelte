@@ -3,16 +3,20 @@
 	import { isLocalLoaded } from '$lib/i18n';
 	import { Hero, OurProducts, Range, Rooms, ShareSetup } from '$lib/pages';
 
-	let value: string = 'en';
+	let lang: string = 'en';
 	function handleLocaleChange(event: Event) {
 		event.preventDefault();
 
 		const target = event.target as HTMLInputElement;
 
-		value = target.value;
-		$locale = value;
+		lang = target.value;
+		$locale = lang;
 	}
 </script>
+
+<svelte:head>
+	<title>Futnio</title>
+</svelte:head>
 
 {#if $isLocalLoaded}
 	<Hero />
@@ -20,7 +24,7 @@
 	<OurProducts />
 	<Rooms />
 	<ShareSetup />
-	<select name="lang" id="lang" {value} on:change={handleLocaleChange}>
+	<select name="lang" id="lang" {lang} on:change={handleLocaleChange}>
 		{#each $locales as locale, i}
 			<option value={locale}>{locale.toUpperCase()}</option>
 		{/each}
