@@ -20,9 +20,6 @@
 
 {#if $isLocalLoaded}
 	<Hero />
-	<h1>Forms</h1>
-	<TestForm />
-
 	<Range />
 	<OurProducts />
 	<Rooms />
@@ -32,23 +29,6 @@
 			<option value={locale}>{locale.toUpperCase()}</option>
 		{/each}
 	</select>
-	<!-- <h1 class=" text-green-400">{$t('heading')}</h1>
-	
-		<p>
-			{$t('body_text', {
-				values: {
-					download: $number(30242),
-					date: $date(Date.UTC(2023, 6, 14, 0, 0, 0, 0), {
-						year: 'numeric',
-						month: 'long',
-						day: 'numeric'
-					})
-				}
-			})}
-		</p>
-		<div>
-			<span>{$t('awards', { values: { n: 1 } })}</span>
-		</div> -->
 {:else}
 	<div class="container__content">Locale initializing...</div>
 {/if}
