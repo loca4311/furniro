@@ -4,13 +4,13 @@
 	import TextLink from '../Core/TextLink.svelte';
 </script>
 
-<footer class="bg-white mt-auto">
+<footer class="bg-white mt-auto border border-[rgba(0, 0, 0, 0.17)]">
 	<div>
 		<Container>
 			<div class="footer_top py-12">
 				<div class="flex flex-col lg:flex-row lg:justify-between">
-					<div>
-						<div class="text-black text-3xl font-semibold mb-[3.125rem]">
+					<div class="lg:mr-4">
+						<div class="text-black text-3xl font-semibold mb-5 lg:mb-[3.125rem]">
 							<span>Firniro.</span>
 						</div>
 						<p class="max-w-[17.8125rem] text-gray-600">
@@ -18,7 +18,12 @@
 						</p>
 					</div>
 
-					<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2 lg:ml-auto text-black">
+					<div
+						class="
+							grid grid-cols-1 gap-8 text-black my-14
+							sm:grid-cols-2 lg:grid-cols-2 lg:ml-auto lg:my-0
+						"
+					>
 						<FooterList title="Links">
 							<li>
 								<TextLink href={EPages.HOME}>Home</TextLink>
@@ -47,8 +52,8 @@
 							</li>
 						</FooterList>
 					</div>
-					<div class=" lg:ml-[4.5rem]">
-						<p class="font-medium text-gray-600 mb-[3.4375rem]">Newsletter</p>
+					<div class="max-w-[17.8125rem] lg:ml-[4.5rem]">
+						<p class="font-medium text-gray-600 mb-5 lg:mb-[3.4375rem]">Newsletter</p>
 						<p class="mt-4 max-w-xs text-gray-500">
 							Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse non cupiditate quae nam
 							molestias.
