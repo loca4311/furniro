@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { ChevronRightIcon } from '$lib/assets/icons';
 	import TextLink from './Core/TextLink.svelte';
 
 	let crumbs: Array<{ label: string; href: string }> = [];
@@ -32,23 +33,14 @@
 >
 	{#each crumbs as crumb, i}
 		{#if i == crumbs.length - 1}
-			<span>
+			<span class="text-black font-light">
 				{crumb.label}
 			</span>
 		{:else}
-			<TextLink href={crumb.href} class="block w-auto mr-[0.375rem]">
+			<TextLink href={crumb.href} class="block w-auto mr-[0.375rem] text-black">
 				{crumb.label}
 			</TextLink>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				width="20"
-				height="20"
-				viewBox="0 0 20 20"
-				fill="none"
-				class="mr-[0.375rem]"
-			>
-				<path d="M6 15L11 10L6 5L7 3L14 10L7 17L6 15Z" fill="black" />
-			</svg>
+			<ChevronRightIcon class="min-w-5 h-5 mr-[0.375rem]" />
 		{/if}
 	{/each}
 </div>

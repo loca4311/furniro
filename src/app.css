@@ -16,6 +16,12 @@
 	}
 }
 
+@layer components {
+	.h1 {
+		@apply text-7xl text-black font-medium;
+	}
+}
+
 @layer utilities {
 	/* Hide scrollbar for Chrome, Safari and Opera */
 	.no-scrollbar::-webkit-scrollbar {

@@ -26,7 +26,8 @@ export default {
 				'3xl': ['24px', '36px'],
 				'4xl': ['32px', '48px'],
 				'5xl': ['40px', '48px'],
-				'6xl': ['52px', '65px']
+				'6xl': ['52px', '65px'],
+				'7xl': ['48px', '72px']
 			},
 			container: {
 				canter: true,

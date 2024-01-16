@@ -16,14 +16,22 @@
 		<Container>
 			<div
 				class="
-          pt-[7.5625rem] pb-[6.1875rem]
+          pt-[4.5625rem] pb-[3.1875rem]
           flex flex-col items-center
+          lg:pt-[7.5625rem] lg:pb-[6.1875rem]
         "
 			>
-				<h1>
-					{name}
-				</h1>
-				<Breadcrumbs></Breadcrumbs>
+				<div>
+					<h1
+						class="
+             h1
+          "
+					>
+						{name}
+					</h1>
+				</div>
+
+				<Breadcrumbs />
 			</div>
 		</Container>
 	</div>
