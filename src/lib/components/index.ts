@@ -1,7 +1,10 @@
 export { default as Header } from './Header/Header.svelte';
 export { default as Footer } from './Footer/Footer.svelte';
 export { default as FooterList } from './Footer/FooterList.svelte';
+export { default as SubscribeForm } from './Footer/SubscribeForm.svelte';
 export { default as Container } from './Container.svelte';
+export { default as Hero } from './Hero.svelte';
+export { default as Breadcrumbs } from './Breadcrumbs.svelte';
 export { default as Logo } from './Header/Logo.svelte';
 export { default as NavigationItem } from './Header/NavigationItem.svelte';
 export { default as TextLink } from './Core/TextLink.svelte';

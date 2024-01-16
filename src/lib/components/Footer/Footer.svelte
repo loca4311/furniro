@@ -1,5 +1,5 @@
 <script>
-	import { Container, FooterList } from '$lib/components';
+	import { Container, FooterList, SubscribeForm } from '$lib/components';
 	import { EPages } from '$lib/types';
 	import TextLink from '../Core/TextLink.svelte';
 </script>
@@ -54,10 +54,7 @@
 					</div>
 					<div class="max-w-[17.8125rem] lg:ml-[4.5rem]">
 						<p class="font-medium text-gray-600 mb-5 lg:mb-[3.4375rem]">Newsletter</p>
-						<p class="mt-4 max-w-xs text-gray-500">
-							Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse non cupiditate quae nam
-							molestias.
-						</p>
+						<SubscribeForm />
 					</div>
 				</div>
 			</div>
