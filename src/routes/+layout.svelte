@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { Header, Footer } from '$lib/components';
 	import messagesStore from '$lib/store/messages.store';
-	import { onMount } from 'svelte';
 	import '../app.css';
+	import '$lib/firebase/firebase.client';
 
 	function closeMessage() {
 		messagesStore.hide();
