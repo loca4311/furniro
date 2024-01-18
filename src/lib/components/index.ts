@@ -16,3 +16,4 @@ export { default as ProductList } from './Products/ProductList.svelte';
 export { default as Slider } from './Slider/Slider.svelte';
 export { default as SliderItem } from './Slider/SliderItem.svelte';
 export { default as Link } from './Core/Link.svelte';
+export { default as LoginWithGoogle } from './Auth/LoginWithGoogle.svelte';

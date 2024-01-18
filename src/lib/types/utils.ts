@@ -8,5 +8,6 @@ export enum EPages {
 	ABOUT = '/about',
 	COMPRASION = '/comprasion',
 	PROFILE = '/profile',
-	ADDPRODUCT = '/add-product'
+	ADDPRODUCT = '/add-product',
+	LOGIN = '/login'
 }

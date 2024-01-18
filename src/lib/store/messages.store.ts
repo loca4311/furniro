@@ -1,17 +1,17 @@
 import { writable } from 'svelte/store';
 import { PUBLIC_ERROR_MESSAGE } from '$env/static/public';
 
-const messagesStore = writable({ show: false, message: '', type: 'errror' });
+const messageStore = writable({ show: false, message: '', type: 'error' });
 
 export default {
-	subscribe: messagesStore.subscribe,
-	showError: (message = PUBLIC_ERROR_MESSAGE) => {
-		messagesStore.set({ show: true, message, type: 'error' });
+	subscribe: messageStore.subscribe,
+	showError: function (message = PUBLIC_ERROR_MESSAGE) {
+		messageStore.set({ show: true, message, type: 'error' });
 	},
-	showSuccess: (message) => {
-		messagesStore.set({ show: true, message, type: 'success' });
+	showSuccess: function (message) {
+		messageStore.set({ show: true, message, type: 'success' });
 	},
-	hide: () => {
-		messagesStore.set({ show: false, message: '', type: 'success' });
+	hide: function () {
+		messageStore.set({ show: false, message: '', type: 'success' });
 	}
 };

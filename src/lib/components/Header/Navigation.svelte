@@ -4,7 +4,7 @@
 	import { TextLink, NavigationItem } from '$lib/components';
 	import { clickOutside } from '$lib/directives/clickOutside';
 
-	let isLoggedIn = true;
+	let isLoggedIn = false;
 	let isOpen = false;
 </script>
 
@@ -63,7 +63,7 @@
 			{:else}
 				<!-- Not logged In -->
 				<NavigationItem>
-					<TextLink>{$t('navigation.login')}</TextLink>
+					<TextLink href={EPages.LOGIN}>{$t('navigation.login')}</TextLink>
 				</NavigationItem>
 				<NavigationItem>
 					<TextLink>{$t('navigation.signUp')}</TextLink>
