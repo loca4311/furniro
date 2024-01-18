@@ -4,6 +4,7 @@
 	import { TextLink, NavigationItem } from '$lib/components';
 	import { clickOutside } from '$lib/directives/clickOutside';
 
+	let isLoggedIn = true;
 	let isOpen = false;
 </script>
 
@@ -37,17 +38,39 @@
       "
 		>
 			<NavigationItem>
-				<TextLink href={EPages.HOME}>{$t('navigation.home')}</TextLink>
+				<TextLink class="text-golden-600" ariaCurrent="page" href={EPages.HOME}
+					>{$t('navigation.home')}</TextLink
+				>
 			</NavigationItem>
 			<NavigationItem>
 				<TextLink href={EPages.SHOP}>{$t('navigation.shop')}</TextLink>
 			</NavigationItem>
 			<NavigationItem>
-				<TextLink href={EPages.ABOUT}>{$t('navigation.about')}</TextLink>
+				<TextLink href={EPages.ABOUT} class="whitespace-nowrap">{$t('navigation.about')}</TextLink>
 			</NavigationItem>
 			<NavigationItem>
 				<TextLink href={EPages.CONTACT}>{$t('navigation.contact')}</TextLink>
 			</NavigationItem>
+			<!-- LOGGED IN  -->
+			{#if isLoggedIn}
+				<NavigationItem>
+					<TextLink href={EPages.PROFILE}>{$t('navigation.profile')}</TextLink>
+				</NavigationItem>
+				<NavigationItem>
+					<TextLink href={EPages.ADDPRODUCT}>{$t('navigation.addProduct')}</TextLink>
+				</NavigationItem>
+				<NavigationItem>
+					<TextLink>{$t('navigation.logout')}</TextLink>
+				</NavigationItem>
+			{:else}
+				<!-- Not logged In -->
+				<NavigationItem>
+					<TextLink>{$t('navigation.login')}</TextLink>
+				</NavigationItem>
+				<NavigationItem>
+					<TextLink>{$t('navigation.signUp')}</TextLink>
+				</NavigationItem>
+			{/if}
 		</ul>
 	</div>
 	<button

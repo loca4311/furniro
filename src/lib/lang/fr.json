@@ -3,7 +3,9 @@
 		"home": "Accueil",
 		"shop": "Boutique",
 		"about": "À propos",
-		"contact": "Contact"
+		"contact": "Contact",
+		"login": "Login",
+		"signUp": "Sign Up"
 	},
 	"cart": {
 		"title": "Panier"

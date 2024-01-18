@@ -6,5 +6,7 @@ export enum EPages {
 	CONTACT = '/contact',
 	BLOG = '/blog',
 	ABOUT = '/about',
-	COMPRASION = '/comprasion'
+	COMPRASION = '/comprasion',
+	PROFILE = '/profile',
+	ADDPRODUCT = '/add-product'
 }

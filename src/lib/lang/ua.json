@@ -3,7 +3,9 @@
 		"home": "Головна",
 		"shop": "Магазин",
 		"about": "Про нас",
-		"contact": "Контакти"
+		"contact": "Контакти",
+		"login": "Login",
+		"signUp": "Sign Up"
 	},
 	"cart": {
 		"title": "Кошик"

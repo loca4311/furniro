@@ -7,7 +7,7 @@
 	<img src={logo} alt="" />
 	<span
 		class="
-					hidden md:block
+					hidden lg:block
 					montserrat text-[2.125rem] font-bold leading-[2.75rem]
 					ml-[0.3125rem]
 				">Furniro</span

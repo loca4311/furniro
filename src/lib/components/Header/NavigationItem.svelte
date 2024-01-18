@@ -1,7 +1,7 @@
 <li
 	class="
     w-full
-    md:px-4 lg:px-8 xl:px-[2.3438rem]
+    md:px-2 lg:px-3 xl:px-[2.3438rem]
 "
 >
 	<slot />
