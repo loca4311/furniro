@@ -10,6 +10,7 @@
 <a
 	{href}
 	aria-current={ariaCurrent}
+	on:click
 	class="
 		w-full block py-2 font-medium hover:text-golden-600 whitespace-nowrap
 		{$page.url.pathname === href ? 'text-golden-600' : ''}

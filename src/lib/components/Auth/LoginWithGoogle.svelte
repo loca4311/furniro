@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { loginWithGoogle } from '$lib/firebase/auth.client';
+	import { loginWithGoogle } from '$lib/firebase/auth';
 	import messagesStore from '$lib/store/messages.store';
 
 	async function loginGoogle() {

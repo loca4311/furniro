@@ -3,9 +3,22 @@
 	import { EPages } from '$lib/types';
 	import { TextLink, NavigationItem } from '$lib/components';
 	import { clickOutside } from '$lib/directives/clickOutside';
+	import authStore from '$lib/store/auth.store';
+	import { logout } from '$lib/firebase/auth';
+	import messagesStore from '$lib/store/messages.store';
+	import { goto } from '$app/navigation';
 
-	let isLoggedIn = false;
 	let isOpen = false;
+
+	const onLogout = async () => {
+		try {
+			await logout();
+			goto('/');
+		} catch (e) {
+			console.log(e);
+			messagesStore.showError;
+		}
+	};
 </script>
 
 <div>
@@ -50,7 +63,7 @@
 				<TextLink href={EPages.CONTACT}>{$t('navigation.contact')}</TextLink>
 			</NavigationItem>
 			<!-- LOGGED IN  -->
-			{#if isLoggedIn}
+			{#if $authStore.isLoggedIn}
 				<NavigationItem>
 					<TextLink href={EPages.PROFILE}>{$t('navigation.profile')}</TextLink>
 				</NavigationItem>
@@ -58,7 +71,7 @@
 					<TextLink href={EPages.ADDPRODUCT}>{$t('navigation.addProduct')}</TextLink>
 				</NavigationItem>
 				<NavigationItem>
-					<TextLink>{$t('navigation.logout')}</TextLink>
+					<TextLink on:click={onLogout}>{$t('navigation.logout')}</TextLink>
 				</NavigationItem>
 			{:else}
 				<!-- Not logged In -->
