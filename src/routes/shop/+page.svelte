@@ -1,5 +1,5 @@
 <script>
-	import { Hero } from '$lib/components';
+	import { Hero, Products } from '$lib/components';
 	import { Advantages } from '$lib/pages';
 
 	const name = 'Shop';
@@ -9,4 +9,5 @@
 	<title>Futnio | {name}</title>
 </svelte:head>
 <Hero {name} />
+<Products />
 <Advantages />

@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { firebaseConfig } from '$lib/config';
+// import { getAnalytics } from 'firebase/analytics';
 import { initializeApp, type FirebaseApp, getApps, deleteApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
@@ -17,6 +18,7 @@ if (!getApps().length || !firebaseApp) {
 	firebaseApp = initializeApp(firebaseConfig);
 }
 
+// export const analytics = getAnalytics(firebaseApp);
 export const db = getFirestore(firebaseApp);
 export const firebaseAuth = getAuth(firebaseApp);
 export const storage = getStorage(firebaseApp);

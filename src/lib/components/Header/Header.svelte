@@ -7,7 +7,9 @@
 		<navbar class="flex items-center justify-between h-[60px] md:h-[100px]">
 			<Logo />
 			<Cart />
-			<UserInfo />
+			{#if false}
+				<UserInfo />
+			{/if}
 			<Navigation />
 		</navbar>
 	</Container>
