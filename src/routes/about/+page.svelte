@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Hero } from '$lib/components';
-	import { Advantages } from '$lib/pages';
 
 	const pageName = 'About';
 </script>
@@ -9,4 +8,3 @@
 	<title>Furniro | {pageName}</title>
 </svelte:head>
 <Hero name={pageName} />
-<div>about</div>

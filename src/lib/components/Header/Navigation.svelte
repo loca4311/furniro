@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { EPages } from '$lib/types';
 	import { t } from 'svelte-i18n';
+	import { EPages } from '$lib/types';
 	import { TextLink, NavigationItem } from '$lib/components';
 	import { clickOutside } from '$lib/directives/clickOutside';
 
@@ -38,9 +38,7 @@
       "
 		>
 			<NavigationItem>
-				<TextLink class="text-golden-600" ariaCurrent="page" href={EPages.HOME}
-					>{$t('navigation.home')}</TextLink
-				>
+				<TextLink ariaCurrent="page" href={EPages.HOME}>{$t('navigation.home')}</TextLink>
 			</NavigationItem>
 			<NavigationItem>
 				<TextLink href={EPages.SHOP}>{$t('navigation.shop')}</TextLink>
