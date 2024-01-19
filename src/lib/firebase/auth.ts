@@ -1,5 +1,6 @@
 import {
 	createUserWithEmailAndPassword,
+	signInWithEmailAndPassword,
 	getAuth,
 	GoogleAuthProvider,
 	signInWithPopup,
@@ -40,6 +41,8 @@ export const signUpEmailPassword = async (email: string, password: string) => {
 	}
 	try {
 		const credential = await createUserWithEmailAndPassword(firebaseAuth, email, password);
+		messagesStore.hide();
+		goto(EPages.HOME);
 		return {
 			type: 'success',
 			status: 200,
@@ -57,6 +60,48 @@ export const signUpEmailPassword = async (email: string, password: string) => {
 			type: 'failure',
 			status: 400,
 			data: { error }
+		};
+	}
+};
+
+export const signInEmailPassword = async (email: string, password: string) => {
+	const firebaseAuth = getAuth();
+
+	if (!email || !password) {
+		messagesStore.showError('Please enter valid email and password.');
+		return {
+			type: 'failure',
+			status: 404,
+			data: { error: 'Email or password are missing' }
+		};
+	}
+
+	if (password.length < 6) {
+		messagesStore.showError('Password should be 6 charecters atleast.');
+		return {
+			type: 'failure',
+			status: 404,
+			data: { error: 'Password is to short.' }
+		};
+	}
+
+	try {
+		const credential = await signInWithEmailAndPassword(firebaseAuth, email, password);
+		messagesStore.hide();
+		goto(EPages.HOME);
+		return {
+			type: 'success',
+			status: 200,
+			data: { ...credential }
+		};
+	} catch (error: any) {
+		const message = error.message;
+		messagesStore.showError(message);
+
+		return {
+			type: 'failure',
+			status: 500,
+			data: { error: message }
 		};
 	}
 };
