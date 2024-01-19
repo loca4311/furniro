@@ -10,6 +10,7 @@ import {
 import messagesStore from '$lib/store/messages.store';
 import { goto } from '$app/navigation';
 import { EPages } from '$lib/types';
+import { handlePasswordResetError } from '$lib/utils';
 
 export const loginWithGoogle = async () => {
 	const userCredential = await signInWithPopup(getAuth(), new GoogleAuthProvider());
@@ -103,24 +104,19 @@ export const signInEmailPassword = async (email: string, password: string) => {
 	}
 };
 
-export const sendPasswordReset = async (
-	email: string,
-	actionCodeSettings?: ActionCodeSettings
-): TFirebaseResult => {
+export const sendPasswordReset = async (email: string) => {
 	try {
-		await sendPasswordResetEmail(getAuth(), email, actionCodeSettings);
+		const firebaseAuth = getAuth();
+
+		await sendPasswordResetEmail(firebaseAuth, email);
+		goto(EPages.LOGIN);
+		messagesStore.showSuccess(`Email sent to the ${email}`);
 		return {
 			type: 'success',
 			status: 200
 		};
 	} catch (error: any) {
-		const message = error.message;
-		messagesStore.showError(message);
-
-		return {
-			type: 'failure',
-			status: 500,
-			data: { error: message }
-		};
+		handlePasswordResetError(error);
+		console.log(error.code);
 	}
 };

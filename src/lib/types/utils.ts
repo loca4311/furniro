@@ -10,5 +10,6 @@ export enum EPages {
 	PROFILE = '/profile',
 	ADDPRODUCT = '/add-product',
 	LOGIN = '/login',
-	SIGNUP = '/signup'
+	SIGNUP = '/signup',
+	FORGORPASSWORD = '/forgot-password'
 }
