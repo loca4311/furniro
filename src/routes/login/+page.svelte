@@ -4,15 +4,15 @@
 
 	const pageName = 'Login';
 
-	async function login(e) {
+	async function login(e: Event) {
 		try {
-			const formData = new FormData(e.target);
+			const formData = new FormData(e.target as HTMLFormElement);
 			const email = formData.get('email');
 			const password = formData.get('password');
 			const user = await signInEmailPassword(email as string, password as string);
 
 			console.log(user);
-		} catch (e) {
+		} catch (error: any) {
 			console.log(error.code);
 		}
 	}
