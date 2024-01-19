@@ -79,7 +79,7 @@
 					<TextLink href={EPages.LOGIN}>{$t('navigation.login')}</TextLink>
 				</NavigationItem>
 				<NavigationItem>
-					<TextLink>{$t('navigation.signUp')}</TextLink>
+					<TextLink href={EPages.SIGNUP}>{$t('navigation.signUp')}</TextLink>
 				</NavigationItem>
 			{/if}
 		</ul>
