@@ -2,7 +2,6 @@
 	import { AuthForm } from '$lib/components';
 	import LoginWithGoogle from '$lib/components/Auth/LoginWithGoogle.svelte';
 	import { signUpEmailPassword } from '$lib/firebase/auth';
-	import { formData } from 'zod-form-data';
 
 	async function sugnUp(e: Event) {
 		try {

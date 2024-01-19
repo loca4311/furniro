@@ -4,15 +4,15 @@ import {
 	getAuth,
 	GoogleAuthProvider,
 	signInWithPopup,
-	signOut
+	signOut,
+	sendPasswordResetEmail
 } from 'firebase/auth';
 import messagesStore from '$lib/store/messages.store';
 import { goto } from '$app/navigation';
 import { EPages } from '$lib/types';
 
 export const loginWithGoogle = async () => {
-	const firebaseAuth = getAuth();
-	const userCredential = await signInWithPopup(firebaseAuth, new GoogleAuthProvider());
+	const userCredential = await signInWithPopup(getAuth(), new GoogleAuthProvider());
 	return userCredential.user;
 };
 
@@ -21,7 +21,6 @@ export const logout = async () => {
 };
 
 export const signUpEmailPassword = async (email: string, password: string) => {
-	const firebaseAuth = getAuth();
 	if (!email || !password) {
 		messagesStore.showError('Please enter valid email and password.');
 		return {
@@ -40,7 +39,7 @@ export const signUpEmailPassword = async (email: string, password: string) => {
 		};
 	}
 	try {
-		const credential = await createUserWithEmailAndPassword(firebaseAuth, email, password);
+		const credential = await createUserWithEmailAndPassword(getAuth(), email, password);
 		messagesStore.hide();
 		goto(EPages.HOME);
 		return {
@@ -65,8 +64,6 @@ export const signUpEmailPassword = async (email: string, password: string) => {
 };
 
 export const signInEmailPassword = async (email: string, password: string) => {
-	const firebaseAuth = getAuth();
-
 	if (!email || !password) {
 		messagesStore.showError('Please enter valid email and password.');
 		return {
@@ -86,13 +83,35 @@ export const signInEmailPassword = async (email: string, password: string) => {
 	}
 
 	try {
-		const credential = await signInWithEmailAndPassword(firebaseAuth, email, password);
+		const credential = await signInWithEmailAndPassword(getAuth(), email, password);
 		messagesStore.hide();
 		goto(EPages.HOME);
 		return {
 			type: 'success',
 			status: 200,
 			data: { ...credential }
+		};
+	} catch (error: any) {
+		const message = error.message;
+		messagesStore.showError(message);
+
+		return {
+			type: 'failure',
+			status: 500,
+			data: { error: message }
+		};
+	}
+};
+
+export const sendPasswordReset = async (
+	email: string,
+	actionCodeSettings?: ActionCodeSettings
+): TFirebaseResult => {
+	try {
+		await sendPasswordResetEmail(getAuth(), email, actionCodeSettings);
+		return {
+			type: 'success',
+			status: 200
 		};
 	} catch (error: any) {
 		const message = error.message;
