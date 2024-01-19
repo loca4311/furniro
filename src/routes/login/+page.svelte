@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { AuthForm, LoginWithGoogle } from '$lib/components';
 	import { signInEmailPassword } from '$lib/firebase/auth';
+	import { afterLogin } from '$lib/helpers/route.helper';
+	import { page } from '$app/stores';
 
 	const pageName = 'Login';
 
@@ -10,6 +12,8 @@
 			const email = formData.get('email');
 			const password = formData.get('password');
 			const user = await signInEmailPassword(email as string, password as string);
+
+			await afterLogin($page.url);
 
 			console.log(user);
 		} catch (error: any) {

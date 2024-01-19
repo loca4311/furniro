@@ -42,7 +42,7 @@ export const signUpEmailPassword = async (email: string, password: string) => {
 	try {
 		const credential = await createUserWithEmailAndPassword(getAuth(), email, password);
 		messagesStore.hide();
-		goto(EPages.HOME);
+
 		return {
 			type: 'success',
 			status: 200,
@@ -54,8 +54,6 @@ export const signUpEmailPassword = async (email: string, password: string) => {
 			goto(EPages.LOGIN);
 		}
 
-		// const message = error.code;
-		// messagesStore.showError(error);
 		return {
 			type: 'failure',
 			status: 400,
@@ -86,7 +84,6 @@ export const signInEmailPassword = async (email: string, password: string) => {
 	try {
 		const credential = await signInWithEmailAndPassword(getAuth(), email, password);
 		messagesStore.hide();
-		goto(EPages.HOME);
 		return {
 			type: 'success',
 			status: 200,

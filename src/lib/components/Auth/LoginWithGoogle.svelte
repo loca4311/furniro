@@ -1,10 +1,13 @@
 <script lang="ts">
 	import { loginWithGoogle } from '$lib/firebase/auth';
+	import { afterLogin } from '$lib/helpers/route.helper';
 	import messagesStore from '$lib/store/messages.store';
+	import { page } from '$app/stores';
 
 	async function loginGoogle() {
 		try {
 			const user = await loginWithGoogle();
+			await afterLogin($page.url);
 			console.log(user);
 		} catch (error) {
 			if (error.code === 'auth/cancelled-popup-request') {
