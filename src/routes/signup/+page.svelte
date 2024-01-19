@@ -4,9 +4,9 @@
 	import { signUpEmailPassword } from '$lib/firebase/auth';
 	import { formData } from 'zod-form-data';
 
-	async function sugnUp(e) {
+	async function sugnUp(e: Event) {
 		try {
-			const formData = new FormData(e.target);
+			const formData = new FormData(e.target as HTMLFormElement);
 			const email = formData.get('email');
 			const password = formData.get('password');
 			const user = await signUpEmailPassword(email as string, password as string);
