@@ -46,7 +46,7 @@ export const signUpEmailPassword = async (email: string, password: string) => {
 		return {
 			type: 'success',
 			status: 200,
-			data: { ...credential }
+			data: { credential }
 		};
 	} catch (error: any) {
 		if (error.code === 'auth/email-already-in-use') {
@@ -87,7 +87,7 @@ export const signInEmailPassword = async (email: string, password: string) => {
 		return {
 			type: 'success',
 			status: 200,
-			data: { ...credential }
+			data: { credential }
 		};
 	} catch (error: any) {
 		const message = error.message;

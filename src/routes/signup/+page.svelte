@@ -2,13 +2,18 @@
 	import { AuthForm } from '$lib/components';
 	import LoginWithGoogle from '$lib/components/Auth/LoginWithGoogle.svelte';
 	import { signUpEmailPassword } from '$lib/firebase/auth';
+	import { afterLogin } from '$lib/helpers/route.helper';
+	import { page } from '$app/stores';
 
 	async function sugnUp(e: Event) {
 		try {
 			const formData = new FormData(e.target as HTMLFormElement);
 			const email = formData.get('email');
 			const password = formData.get('password');
-			const user = await signUpEmailPassword(email as string, password as string);
+			const signUpResult = await signUpEmailPassword(email as string, password as string);
+			const { data } = signUpResult;
+			const user = data.credential?.user;
+			await afterLogin($page.url, user?.uid);
 			console.log(user);
 		} catch (error: any) {
 			console.log(error.code);

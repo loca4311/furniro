@@ -11,9 +11,11 @@
 			const formData = new FormData(e.target as HTMLFormElement);
 			const email = formData.get('email');
 			const password = formData.get('password');
-			const user = await signInEmailPassword(email as string, password as string);
+			const signInResult = await signInEmailPassword(email as string, password as string);
+			const { data } = signInResult;
+			const user = data.credential?.user;
 
-			await afterLogin($page.url);
+			await afterLogin($page.url, user?.uid);
 
 			console.log(user);
 		} catch (error: any) {
