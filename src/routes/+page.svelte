@@ -4,6 +4,11 @@
 	import { Hero, OurProducts, Range, Rooms, ShareSetup } from '$lib/pages';
 
 	let lang: string = 'en';
+
+	export let data;
+
+	const count = data.count;
+
 	function handleLocaleChange(event: Event) {
 		event.preventDefault();
 
@@ -20,6 +25,7 @@
 
 {#if $isLocalLoaded}
 	<Hero />
+	{count}
 	<Range />
 	<OurProducts />
 	<Rooms />
