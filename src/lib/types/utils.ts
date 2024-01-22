@@ -13,3 +13,7 @@ export enum EPages {
 	SIGNUP = '/signup',
 	FORGORPASSWORD = '/forgot-password'
 }
+
+export enum ECookies {
+	FIREBASE_SESSION_TOKEN = 'auth-session-token'
+}

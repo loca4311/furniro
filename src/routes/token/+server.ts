@@ -1,5 +1,6 @@
 import { json } from '@sveltejs/kit';
 import { auth } from '$lib/firebase/firebase.server';
+import { ECookies } from '$lib/types';
 
 /** @type {import('./$types').RequestHndler}  */
 export async function POST({ request, cookies }) {
@@ -8,7 +9,7 @@ export async function POST({ request, cookies }) {
 		const verifiedToken = await auth.verifyIdToken(token ?? '', true);
 
 		if (verifiedToken.email === email) {
-			cookies.set('jwt', token, {
+			cookies.set(ECookies.FIREBASE_SESSION_TOKEN, token, {
 				maxAge: verifiedToken.exp - Date.now() / 1000,
 				path: '/'
 			});
