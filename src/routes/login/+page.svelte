@@ -15,11 +15,11 @@
 			const { data } = signInResult;
 			const user = data.credential?.user;
 
-			await afterLogin($page.url, user?.uid);
+			await afterLogin($page.url, user?.uid, user?.email);
 
 			console.log(user);
 		} catch (error: any) {
-			console.log(error.code);
+			console.log(error);
 		}
 	}
 </script>
