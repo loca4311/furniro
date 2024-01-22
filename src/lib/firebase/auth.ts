@@ -19,6 +19,7 @@ export const loginWithGoogle = async () => {
 
 export const logout = async () => {
 	signOut(getAuth());
+	await fetch('/logout');
 };
 
 export const signUpEmailPassword = async (email: string, password: string) => {
