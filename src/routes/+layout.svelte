@@ -1,8 +1,41 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { Header, Footer } from '$lib/components';
 	import messagesStore from '$lib/store/messages.store';
 	import '../app.css';
 	import '$lib/firebase/firebase.client';
+	import { sendJWTToken } from '$lib/firebase/auth';
+
+	let timeId: string | number | NodeJS.Timeout | undefined;
+
+	async function sendServerToken() {
+		try {
+			await sendJWTToken();
+		} catch (error) {
+			clearInterval(timeId);
+			messagesStore.showError();
+			console.log(error);
+		}
+	}
+
+	onMount(async () => {
+		try {
+			await sendServerToken();
+			timeId = setInterval(
+				async () => {
+					await sendServerToken();
+				},
+				1000 * 60 * 10
+			);
+		} catch (error) {
+			console.log(error);
+			messagesStore.showError();
+		}
+
+		return () => {
+			clearInterval(timeId);
+		};
+	});
 
 	function closeMessage() {
 		messagesStore.hide();
