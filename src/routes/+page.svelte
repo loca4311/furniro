@@ -25,7 +25,9 @@
 
 {#if $isLocalLoaded}
 	<Hero />
-	{count}
+	<div class="text-center">
+		Number of users: {count}
+	</div>
 	<Range />
 	<OurProducts />
 	<Rooms />

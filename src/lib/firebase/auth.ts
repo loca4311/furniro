@@ -117,3 +117,18 @@ export const sendPasswordReset = async (email: string) => {
 		console.log(error.code);
 	}
 };
+
+export const sendJWTToken = async () => {
+	const auth = getAuth();
+	const user = auth.currentUser;
+
+	if (!user) {
+		return;
+	}
+
+	const token = await user.getIdToken(true);
+	await fetch('/token', {
+		method: 'POST',
+		body: JSON.stringify({ token, email: user.email })
+	});
+};
