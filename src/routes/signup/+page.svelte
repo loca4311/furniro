@@ -13,7 +13,7 @@
 			const signUpResult = await signUpEmailPassword(email as string, password as string);
 			const { data } = signUpResult;
 			const user = data.credential?.user;
-			await afterLogin($page.url, user?.uid, user?.email);
+			await afterLogin($page.url, user);
 			console.log(user);
 		} catch (error: any) {
 			console.log(error.code);

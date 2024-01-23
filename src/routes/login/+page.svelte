@@ -15,7 +15,7 @@
 			const { data } = signInResult;
 			const user = data.credential?.user;
 
-			await afterLogin($page.url, user?.uid, user?.email);
+			await afterLogin($page.url, user);
 
 			console.log(user);
 		} catch (error: any) {
