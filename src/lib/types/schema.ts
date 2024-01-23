@@ -4,3 +4,9 @@ export interface Room {
 	image: string;
 	link?: string;
 }
+
+export interface User {
+	id: string;
+	email: string;
+	admin: boolean;
+}
