@@ -21,3 +21,4 @@ if (!getApps().length || !firebaseApp) {
 
 // export const analytics = getAnalytics(firebaseApp);
 export const db = getFirestore(firebaseApp);
+// export const functions = getFunctions();

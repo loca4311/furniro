@@ -2,7 +2,7 @@
 	import { EPages } from '$lib/types';
 
 	export let btnName: string;
-	export let isForgotPassword: boolean = false;
+	export let isEmailForm: boolean = false;
 </script>
 
 <form class="space-y-4 md:space-y-6" on:submit|preventDefault>
@@ -18,7 +18,7 @@
 			placeholder="name@company.com"
 		/>
 	</div>
-	{#if !isForgotPassword}
+	{#if !isEmailForm}
 		<div>
 			<label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
 				>Password</label
@@ -49,7 +49,7 @@
 				</div>
 			</div>
 		{/if}
-		{#if !isForgotPassword}
+		{#if !isEmailForm}
 			<a
 				href={EPages.FORGORPASSWORD}
 				class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"

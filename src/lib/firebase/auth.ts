@@ -7,10 +7,12 @@ import {
 	signOut,
 	sendPasswordResetEmail
 } from 'firebase/auth';
+import { getFunctions, httpsCallable } from 'firebase/functions';
 import messagesStore from '$lib/store/messages.store';
 import { goto } from '$app/navigation';
 import { EPages } from '$lib/types';
 import { handlePasswordResetError } from '$lib/utils';
+// import { functions } from './firebase.server';
 
 export const loginWithGoogle = async () => {
 	const userCredential = await signInWithPopup(getAuth(), new GoogleAuthProvider());
@@ -117,6 +119,15 @@ export const sendPasswordReset = async (email: string) => {
 		handlePasswordResetError(error);
 		console.log(error.code);
 	}
+};
+
+export const addAdminPermision = async (email: string) => {
+	const functions = getFunctions();
+	const addAdminRole = httpsCallable(functions, 'addAdminRole');
+
+	addAdminRole({ email: email }).then((result) => {
+		messagesStore.showSuccess(result.data.message);
+	});
 };
 
 export const sendJWTToken = async () => {

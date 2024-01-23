@@ -17,6 +17,10 @@
 
 			await afterLogin($page.url, user);
 
+			user?.getIdTokenResult().then((idTokenResult) => {
+				console.log(idTokenResult.claims);
+			});
+
 			console.log(user);
 		} catch (error: any) {
 			console.log(error);

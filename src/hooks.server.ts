@@ -8,6 +8,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 	const lang = event.request.headers.get('accept-language')?.split(',')[0];
 	const protectedRoutes = ['/add-product', '/edit', '/profile'];
 	const guestRoutes = ['/login', '/signup', 'forgot-password'];
+	const adminRoutes = ['/add-admin', 'add-product'];
 
 	if (lang) {
 		locale.set(lang);
@@ -20,6 +21,13 @@ export const handle: Handle = async ({ event, resolve }) => {
 	}
 
 	const user = event.locals?.user;
+
+	let admin = false;
+
+	if (user) {
+		admin = user.admin;
+	}
+
 	const url = event.url;
 
 	if (url.pathname !== '/') {
@@ -28,6 +36,9 @@ export const handle: Handle = async ({ event, resolve }) => {
 		}
 		if (user && guestRoutes.find((u) => url.pathname.indexOf(u) > -1)) {
 			throw redirect(302, '/');
+		}
+		if (!admin && adminRoutes.find((u) => url.pathname.indexOf(u) > -1)) {
+			throw redirect(302, `/`);
 		}
 	}
 
@@ -51,6 +62,7 @@ async function getFirebaseUser(token) {
 
 	return {
 		id: user.uid,
-		email: user.email
+		email: user.email,
+		admin: user.customClaims?.admin ?? false
 	};
 }
