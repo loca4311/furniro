@@ -7,10 +7,8 @@ export default readable({ isAdmin: false }, (set) => {
 		onAuthStateChanged(getAuth(), async (user) => {
 			if (user) {
 				const idTokenResult = await user?.getIdTokenResult();
-				console.log(idTokenResult.claims);
+
 				if (idTokenResult?.claims && idTokenResult.claims.admin) {
-					const admin = idTokenResult.claims.admin;
-					console.log('claim', admin);
 					set({ isAdmin: true });
 				}
 			} else {
