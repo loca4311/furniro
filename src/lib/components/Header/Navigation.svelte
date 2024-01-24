@@ -4,7 +4,7 @@
 	import { TextLink, NavigationItem } from '$lib/components';
 	import { clickOutside } from '$lib/directives/clickOutside';
 	import authStore from '$lib/store/auth.store';
-	import adminStore from '$lib/store/admin.store';
+
 	import { logout } from '$lib/firebase/auth';
 	import messagesStore from '$lib/store/messages.store';
 	import { goto } from '$app/navigation';
@@ -68,7 +68,7 @@
 				<NavigationItem>
 					<TextLink href={EPages.PROFILE}>{$t('navigation.profile')}</TextLink>
 				</NavigationItem>
-				{#if $adminStore.isAdmin}
+				{#if $authStore.isAdmin}
 					<NavigationItem>
 						<TextLink href={EPages.ADDPRODUCT}>{$t('navigation.addProduct')}</TextLink>
 					</NavigationItem>
