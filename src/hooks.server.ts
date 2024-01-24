@@ -8,7 +8,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 	const lang = event.request.headers.get('accept-language')?.split(',')[0];
 	const protectedRoutes = ['/add-product', '/edit', '/profile'];
 	const guestRoutes = ['/login', '/signup', 'forgot-password'];
-	const adminRoutes = ['/add-admin', 'add-product'];
+	const adminRoutes = ['/add-admin', '/add-product'];
 
 	if (lang) {
 		locale.set(lang);

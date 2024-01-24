@@ -5,11 +5,6 @@
 	import '../app.css';
 	import '$lib/firebase/firebase.client';
 	import { sendJWTToken } from '$lib/firebase/auth';
-	import type { User } from '$lib/types';
-
-	export let data;
-
-	$: user = data.user as User;
 
 	let timeId: string | number | NodeJS.Timeout | undefined;
 
