@@ -13,7 +13,7 @@
 
 		crumbs = tokens.map((t) => {
 			tokenPath += '/' + t;
-			t = t.charAt(0).toUpperCase() + t.slice(1);
+			t = t.charAt(0).toUpperCase() + t.slice(1).split('-').join(' ');
 
 			return {
 				label: $page.data.label || t,
