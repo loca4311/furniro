@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Hero, Input } from '$lib/components';
+	import { FilterChips, Hero, Input } from '$lib/components';
 	import Container from '$lib/components/Container.svelte';
 
 	const pageName = 'Add Product';
@@ -55,6 +55,7 @@
 								placeholder="Short Description"
 								max={200}
 							/>
+							<FilterChips />
 						</div>
 					</form>
 				</div>

@@ -20,3 +20,4 @@ export { default as LoginWithGoogle } from './Auth/LoginWithGoogle.svelte';
 export { default as AuthForm } from './Auth/AuthForm.svelte';
 export { default as Input } from './Core/Input/Input.svelte';
 export { default as Label } from './Core/Input/Label.svelte';
+export { default as FilterChips } from './Core/MultiSelect.svelte';
