@@ -3,6 +3,8 @@
 	import Container from '$lib/components/Container.svelte';
 
 	const pageName = 'Add Product';
+
+	let isLoading = false;
 </script>
 
 <svele:head>
@@ -25,9 +27,34 @@
 						<h2 class="font-semibold text-4xl text-black">Product Details</h2>
 					</div>
 					<form method="POST">
-						<div class=" space-x-9">
+						<div class=" space-y-9">
 							<!-- Input here -->
-							<Input />
+							<Input
+								name="productName"
+								type="text"
+								id="productName"
+								label="Product Name"
+								placeholder="Product Name"
+								disabled={isLoading}
+							/>
+							<Input
+								name="price"
+								type="number"
+								id="price"
+								label="Product price in $:"
+								placeholder="Product price"
+								errorMessage="error"
+								isError
+							/>
+							<Input
+								isTextArea
+								name="shortDescription"
+								type="text"
+								id="shortDesscription"
+								label="Short Description"
+								placeholder="Short Description"
+								max={200}
+							/>
 						</div>
 					</form>
 				</div>

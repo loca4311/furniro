@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { e } from 'vitest/dist/reporters-O4LBziQ_.js';
 	import Label from './Label.svelte';
 
 	export let type: 'text' | 'email' | 'password' | 'number' | 'date' = 'text';
@@ -25,12 +24,30 @@
 </script>
 
 <div class={outerClass}>
-	<label>
+	<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+	<label
+		class="
+			flex flex-col items-start
+			{extraClass} 
+		"
+		on:click
+		on:keydown
+		on:click={(e) => input.focus()}
+	>
 		{#if label}
 			<Label {label} {disabled} {isError} />
 		{/if}
 		{#if !isTextArea}
 			<input
+				class="
+					w-full
+				  py-[1.625rem]
+				  px-[1.875rem]
+					text-base text-black
+				  border border-[#9F9F9F] rounded-lg
+					focus:border-golden-600 focus-within:border-golden-600 focus:!outline-none focus-visible:border-golden-600 focus-visible:outline-none
+					hover:border-golden-600
+				"
 				{type}
 				{id}
 				{name}
@@ -51,9 +68,21 @@
 			/>
 		{:else}
 			<textarea
-				{name}
-				{disabled}
+				class="
+					py-[1.625rem]
+					px-[1.875rem]
+					appearance-none bg-transparent grow text-left
+					w-full min-h-[10.375rem] max-h-[16rem]
+					border border-[#9F9F9F] rounded-lg
+					text-base text-black
+					focus:border-golden-600 focus-within:border-golden-600 focus:!outline-none focus-visible:border-golden-600 focus-visible:outline-none
+					hover:border-golden-600
+					
+				"
 				{id}
+				{name}
+				{placeholder}
+				{disabled}
 				minlength={min}
 				maxlength={max}
 				bind:this={input}
