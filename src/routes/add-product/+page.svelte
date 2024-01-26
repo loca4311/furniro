@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { MultiSelect, Hero, Input } from '$lib/components';
+	import { MultiSelect, Hero, Input, Tiptap } from '$lib/components';
 	import { Input as FlowInput, Label, Helper } from 'flowbite-svelte';
 	import Container from '$lib/components/Container.svelte';
 
@@ -134,6 +134,7 @@
 								choises={tags}
 								selected={selectedTags}
 							/>
+							<Tiptap />
 						</div>
 					</form>
 				</div>
