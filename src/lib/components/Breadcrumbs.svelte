@@ -33,7 +33,7 @@
 >
 	{#each crumbs as crumb, i}
 		{#if i == crumbs.length - 1}
-			<span class="text-black font-light">
+			<span class="text-black font-light whitespace-nowrap">
 				{crumb.label}
 			</span>
 		{:else}

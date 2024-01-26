@@ -18,3 +18,5 @@ export { default as SliderItem } from './Slider/SliderItem.svelte';
 export { default as Link } from './Core/Link.svelte';
 export { default as LoginWithGoogle } from './Auth/LoginWithGoogle.svelte';
 export { default as AuthForm } from './Auth/AuthForm.svelte';
+export { default as Input } from './Core/Input/Input.svelte';
+export { default as Label } from './Core/Input/Label.svelte';
