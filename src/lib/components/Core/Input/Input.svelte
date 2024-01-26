@@ -41,12 +41,13 @@
 			<input
 				class="
 					w-full
-				  py-[1.625rem]
-				  px-[1.875rem]
+					py-4 px-4
+					lg:py-[1.625rem] lg:px-[1.875rem]
 					text-base text-black
 				  border border-[#9F9F9F] rounded-lg
-					focus:border-golden-600 focus-within:border-golden-600 focus:!outline-none focus-visible:border-golden-600 focus-visible:outline-none
-					hover:border-golden-600
+					focus-within:ring-1 focus-within:border-primary-500 ring-primary-500
+					focus:ring-primary-500
+					hover:ring-1 hover:border-primary-500 hover:ring-primary-600
 				"
 				{type}
 				{id}
@@ -69,14 +70,15 @@
 		{:else}
 			<textarea
 				class="
-					py-[1.625rem]
-					px-[1.875rem]
+					py-4 px-4
+					lg:py-[1.625rem] lg:px-[1.875rem]
 					appearance-none bg-transparent grow text-left
 					w-full min-h-[10.375rem] max-h-[16rem]
-					border border-[#9F9F9F] rounded-lg
 					text-base text-black
-					focus:border-golden-600 focus-within:border-golden-600 focus:!outline-none focus-visible:border-golden-600 focus-visible:outline-none
-					hover:border-golden-600
+					border border-[#9F9F9F] rounded-lg
+					focus-within:ring-1 focus-within:border-primary-500 ring-primary-500
+					focus:ring-primary-500
+					hover:ring-1 hover:border-primary-500 hover:ring-primary-600
 					
 				"
 				{id}

@@ -1,10 +1,55 @@
 <script lang="ts">
-	import { FilterChips, Hero, Input } from '$lib/components';
+	import { MultiSelect, Hero, Input } from '$lib/components';
+	import { Input as FlowInput, Label, Helper } from 'flowbite-svelte';
 	import Container from '$lib/components/Container.svelte';
 
 	const pageName = 'Add Product';
 
 	let isLoading = false;
+
+	let sizesChoises = [
+		{ value: 'xs', name: 'XS' },
+		{ value: 's', name: 'S' },
+		{ value: 'm', name: 'M' },
+		{ value: 'l', name: 'L' },
+		{ value: 'xl', name: 'XL' },
+		{ value: 'xxl', name: 'XXL' },
+		{ value: 'XXXL', name: 'XXXL' }
+	];
+
+	let selectedSizes = ['m', 'l'];
+
+	let categories = [
+		{ value: 'sofas', name: 'Sofas' },
+		{ value: 'chairs', name: 'Chairs' },
+		{ value: 'tables', name: 'Tables' },
+		{ value: 'desks', name: 'Desks' },
+		{ value: 'lighting', name: 'Lighting' },
+		{ value: 'decoration', name: 'Decoration' },
+		{ value: 'accessories', name: 'Accessories' },
+		{ value: 'outdoor', name: 'Outdoor' },
+		{ value: 'kitchenware', name: 'Kitchenware' }
+	];
+
+	let selectedCategories: string[] = [];
+
+	let tags = [
+		{ value: 'Home', name: 'Home' },
+		{ value: 'Sofa', name: 'Sofa' },
+		{ value: 'Bed', name: 'Bed' },
+		{ value: 'Dining', name: 'Dining' },
+		{ value: 'Table', name: 'Table' },
+		{ value: 'Desk', name: 'Desk' },
+		{ value: 'Light', name: 'Light' },
+		{ value: 'Round', name: 'Round' },
+		{ value: 'Decoration', name: 'Decoration' },
+		{ value: 'Accessories', name: 'Accessories' },
+		{ value: 'Outdoor', name: 'Outdoor' },
+		{ value: 'Indoor', name: 'Indoor' },
+		{ value: 'Kitchenware', name: 'Kitcheware' }
+	];
+
+	let selectedTags: string[] = [];
 </script>
 
 <svele:head>
@@ -14,10 +59,11 @@
 <section class="add-product">
 	<div class="relative">
 		<Container>
-			<div class=" pt-16 pb-14">
+			<div class="pt-16 pb-14">
 				<div
 					class="
-            pt-9 px-20 pb-16
+						pt-5 px-5 pb-5
+            lg:pt-9 lg:px-20 lg:pb-16
             max-w-screen-md mx-auto
             border border-slate-300 rounded-lg
 
@@ -35,6 +81,7 @@
 								id="productName"
 								label="Product Name"
 								placeholder="Product Name"
+								errorMessage="Please add the product name"
 								disabled={isLoading}
 							/>
 							<Input
@@ -43,8 +90,9 @@
 								id="price"
 								label="Product price in $:"
 								placeholder="Product price"
-								errorMessage="error"
+								errorMessage="Please add the product price"
 								isError
+								required
 							/>
 							<Input
 								isTextArea
@@ -55,7 +103,37 @@
 								placeholder="Short Description"
 								max={200}
 							/>
-							<FilterChips />
+
+							<MultiSelect
+								id="size"
+								label="Pick the sizes:"
+								name="size"
+								choises={sizesChoises}
+								selected={selectedSizes}
+							/>
+							<Input
+								name="sku"
+								type="text"
+								id="sku"
+								label="SKU:"
+								placeholder="AA000"
+								errorMessage="Please add SKU"
+								required
+							/>
+							<MultiSelect
+								id="category"
+								name="category"
+								label="Choose categories:"
+								choises={categories}
+								selected={selectedCategories}
+							/>
+							<MultiSelect
+								id="tags"
+								name="tags"
+								label="Choose tags:"
+								choises={tags}
+								selected={selectedTags}
+							/>
 						</div>
 					</form>
 				</div>
