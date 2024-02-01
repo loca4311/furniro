@@ -50,6 +50,20 @@
 	];
 
 	let selectedTags: string[] = [];
+
+	let colors = [
+		{ value: '#4b0082', name: 'Indigo', color: 'indigo' },
+		{ value: '#ffffff', name: 'White', color: 'white' },
+		{ value: '#000000', name: 'Black', color: 'dark' },
+		{ value: '#ff0000', name: 'Red', color: 'red' },
+		{ value: '#00ff00', name: 'Green', color: 'green' },
+		{ value: '#0000ff', name: 'Blue', color: 'blue' },
+		{ value: '#8c534b', name: 'Grey', color: 'dark' },
+		{ value: '#e67d2f', name: 'Orange', color: 'orange' },
+		{ value: '#ffff00', name: 'Yellow', color: 'yellow' }
+	];
+
+	let selectedColors: string[] = ['#ff0000', '#00ff00', '#0000ff'];
 </script>
 
 <svele:head>
@@ -133,6 +147,13 @@
 								label="Choose tags:"
 								choises={tags}
 								selected={selectedTags}
+							/>
+							<MultiSelect
+								id="colors"
+								name="colors"
+								label="Choose colors:"
+								choises={colors}
+								selected={selectedColors}
 							/>
 							<Tiptap />
 						</div>

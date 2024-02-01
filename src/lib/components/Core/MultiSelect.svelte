@@ -4,7 +4,7 @@
 	export let id: string;
 	export let label: string;
 	export let name: string;
-	export let choises: { value: string; name: string }[];
+	export let choises: { value: string; name: string; color: string }[];
 
 	export let selected: string[];
 </script>
@@ -20,5 +20,13 @@
 		items={choises}
 		bind:value={selected}
 		required
-	></MultiSelect>
+		let:item
+		let:clear
+	>
+		{#if item.color}
+			<Badge color={item.color} dismissable params={{ duration: 100 }} on:close={clear}>
+				{item.name}
+			</Badge>
+		{/if}
+	</MultiSelect>
 </div>
