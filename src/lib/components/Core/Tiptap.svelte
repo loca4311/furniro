@@ -3,8 +3,8 @@
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
 
-	let element;
-	let editor;
+	let element: HTMLDivElement;
+	let editor: Editor | null = null;
 
 	onMount(() => {
 		editor = new Editor({
@@ -25,48 +25,108 @@
 	});
 </script>
 
-<div>
+<div class="tiptap">
 	{#if editor}
 		<div>
 			<button
-				on:click={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+				on:click={() => editor?.chain().focus().toggleBold().run()}
+				class:active={editor.isActive('bold')}
+			>
+				bold
+			</button>
+			<button
+				on:click={() => editor?.chain().focus().toggleItalic().run()}
+				class:active={editor.isActive('italic')}
+			>
+				italic
+			</button>
+			<button
+				on:click={() => editor?.chain().focus().toggleStrike().run()}
+				class:active={editor.isActive('strike')}
+			>
+				strike
+			</button>
+			<button
+				on:click={() => editor?.chain().focus().toggleCode().run()}
+				class:active={editor.isActive('code')}
+			>
+				code
+			</button>
+			<button on:click={() => editor?.chain().focus().unsetAllMarks().run()}> clear marks </button>
+			<button on:click={() => editor?.chain().focus().clearNodes().run()}> clear nodes </button>
+			<button
+				on:click={() => editor?.chain().focus().setParagraph().run()}
+				class:active={editor.isActive('paragraph')}
+			>
+				p
+			</button>
+			<button
+				on:click={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()}
 				class:active={editor.isActive('heading', { level: 2 })}
 			>
 				H2
 			</button>
 			<button
-				on:click={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
+				on:click={() => editor?.chain().focus().toggleHeading({ level: 3 }).run()}
 				class:active={editor.isActive('heading', { level: 3 })}
 			>
 				H3
 			</button>
 			<button
-				on:click={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
+				on:click={() => editor?.chain().focus().toggleHeading({ level: 4 }).run()}
 				class:active={editor.isActive('heading', { level: 4 })}
 			>
 				H4
 			</button>
 			<button
-				on:click={() => editor.chain().focus().setParagraph().run()}
-				class:active={editor.isActive('paragraph')}
+				on:click={() => editor?.chain().focus().toggleBulletList().run()}
+				class:active={editor.isActive('bulletList')}
 			>
-				p
+				bullet list
 			</button>
 			<button
-				on:click={() => editor.chain().focus().setParagraph().run()}
-				class:active={editor.isActive('paragraph')}
+				on:click={() => editor?.chain().focus().toggleOrderedList().run()}
+				class:active={editor.isActive('orderedList')}
 			>
-				p
+				ordered list
+			</button>
+			<button
+				on:click={() => editor?.chain().focus().toggleCodeBlock().run()}
+				class:active={editor.isActive('codeBlock')}
+			>
+				code block
+			</button>
+			<button
+				on:click={() => editor?.chain().focus().toggleBlockquote().run()}
+				class:active={editor.isActive('blockquote')}
+			>
+				blockQuote
+			</button>
+			<button on:click={() => editor?.chain().focus().setHorizontalRule().run()}>
+				horizontal rule
+			</button>
+			<button on:click={() => editor?.chain().focus().setHardBreak().run()}> hard break </button>
+			<button
+				on:click={() => editor?.chain().focus().undo().run()}
+				disabled={!editor.can().chain().focus().undo().run()}
+			>
+				undo
+			</button>
+			<button
+				on:click={() => editor?.chain().focus().redo().run()}
+				disabled={!editor.can().chain().focus().redo().run()}
+			>
+				redo
 			</button>
 		</div>
 	{/if}
 
-	<div bind:this={element}></div>
+	<div class="tiptap border-none" bind:this={element}></div>
 </div>
 
 <style>
+	/* Basic editor styles */
 	button.active {
-		background: black;
-		color: white;
+		background-color: black;
 	}
 </style>
