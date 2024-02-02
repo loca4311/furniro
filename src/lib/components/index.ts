@@ -22,3 +22,4 @@ export { default as Input } from './Core/Input/Input.svelte';
 export { default as Label } from './Core/Input/Label.svelte';
 export { default as MultiSelect } from './Core/MultiSelect.svelte';
 export { default as Tiptap } from './Core/Tiptap.svelte';
+export { default as ProductForm } from './Forms/ProductForm.svelte';

@@ -20,6 +20,10 @@
 	.h1 {
 		@apply text-7xl text-black font-medium;
 	}
+
+	.tiptap {
+		@apply border-none outline-none;
+	}
 }
 
 @layer utilities {

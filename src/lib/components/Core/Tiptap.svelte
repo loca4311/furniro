@@ -121,12 +121,23 @@
 		</div>
 	{/if}
 
-	<div class="tiptap border-none" bind:this={element}></div>
+	<div class="tiptap border-none outline-none" bind:this={element}></div>
 </div>
 
 <style>
 	/* Basic editor styles */
 	button.active {
 		background-color: black;
+	}
+
+	.tiptap {
+		outline: 2px solid transparent !important;
+		outline-color: transparent !important;
+		outline-offset: 2px;
+		border: none;
+	}
+
+	.ProseMirror-focused {
+		outline-color: transparent;
 	}
 </style>

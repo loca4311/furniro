@@ -4,6 +4,7 @@
 	export let id: string;
 	export let label: string;
 	export let name: string;
+	export let isColored = false;
 	export let choises: { value: string; name: string; color: string }[];
 
 	export let selected: string[];
@@ -23,10 +24,8 @@
 		let:item
 		let:clear
 	>
-		{#if item.color}
-			<Badge color={item.color} dismissable params={{ duration: 100 }} on:close={clear}>
-				{item.name}
-			</Badge>
-		{/if}
+		<!-- <Badge dismissable params={{ duration: 100 }} on:close={clear}>
+			{item.name}
+		</Badge> -->
 	</MultiSelect>
 </div>
