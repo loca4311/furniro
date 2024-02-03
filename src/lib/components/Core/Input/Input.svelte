@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Label from './Label.svelte';
 
-	export let type: 'text' | 'email' | 'password' | 'number' | 'date' = 'text';
+	export let type: 'text' | 'email' | 'password' | 'number' | 'date' | 'file' = 'text';
 	export let name: string;
 	export let placeholder = '';
 	export let id = '';
@@ -17,6 +17,7 @@
 	export let isError = false;
 	export let disabled = false;
 	export let outerClass = '';
+	export let accept: string = '';
 	let extraClass = '';
 	export { extraClass as class };
 
@@ -57,6 +58,7 @@
 				{disabled}
 				{required}
 				{autocomplete}
+				{accept}
 				bind:this={input}
 				on:input
 				on:change

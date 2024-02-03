@@ -3,6 +3,8 @@
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
 
+	export let name;
+
 	let element: HTMLDivElement;
 	let editor: Editor | null = null;
 

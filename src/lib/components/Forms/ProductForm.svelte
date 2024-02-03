@@ -88,6 +88,16 @@
 				disabled={isLoading}
 			/>
 			<Input
+				name="productImage"
+				type="file"
+				id="productImage"
+				label="Product Image"
+				placeholder="Product Image"
+				errorMessage="Please add the product Image"
+				disabled={isLoading}
+				accept="image/*"
+			/>
+			<Input
 				name="price"
 				type="number"
 				id="price"
@@ -144,7 +154,8 @@
 				choises={colors}
 				selected={selectedColors}
 			/>
-			<Tiptap />
+			<Tiptap name="textContent" />
+			<button type="submit" class="btn btn-primary w-100"> Submit </button>
 		</div>
 	</form>
 </div>
