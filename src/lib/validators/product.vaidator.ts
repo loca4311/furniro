@@ -1,7 +1,7 @@
 // /* eslint-disable @typescript-eslint/no-var-requires */
-import { value } from '$lib/components/Core/Input/Input.svelte';
+// import { value } from '$lib/components/Core/Input/Input.svelte';
 import yup from 'yup';
-import { formData } from 'zod-form-data';
+// import { formData } from 'zod-form-data';
 
 export default async function validate(formData) {
 	const schema = yup.object({
@@ -60,14 +60,16 @@ export default async function validate(formData) {
 		description: formData.get('shortDescription'),
 		sku: formData.get('sku'),
 		image: formData.get('productImage'),
-		sizes: formData.get('sizes') ?? [],
-		categories: formData.get('categories') ?? [],
-		tags: formData.get('tags') ?? [],
-		colors: formData.get('colors') ?? [],
-		content: formData.get('textContent')
+		sizes: formData.getAll('sizes'),
+		categories: formData.getAll('categories'),
+		tags: formData.getAll('tags') ?? [],
+		colors: formData.getAll('colors') ?? [],
+		content: formData.get('content')
 	};
 
 	try {
+		console.log(data);
+
 		await schema.validate(data, { abortEarly: false });
 
 		return { success: true, product: data };

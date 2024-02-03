@@ -3,6 +3,9 @@
 	import { Input as FlowInput, Label, Helper } from 'flowbite-svelte';
 
 	export let form;
+	let content = '<p>Hello Form</p>';
+
+	console.log(form);
 
 	let isLoading = false;
 
@@ -90,7 +93,6 @@
 				value={form?.name || ''}
 				isError={form?.error_name}
 				errorMessage={form?.error_name}
-				class={form?.error_name ?? 'border-red-500'}
 			/>
 			<Input
 				name="productImage"
@@ -98,9 +100,11 @@
 				id="productImage"
 				label="Product Image"
 				placeholder="Product Image"
-				errorMessage="Please add the product Image"
 				disabled={isLoading}
 				accept="image/*"
+				value={form?.image || undefined}
+				isError={form?.error_image}
+				errorMessage={form?.error_image}
 			/>
 			<Input
 				name="price"
@@ -108,9 +112,10 @@
 				id="price"
 				label="Product price in $:"
 				placeholder="Product price"
+				value={form?.price || ''}
+				isError={form?.error_price}
+				errorMessage={form?.error_price}
 			/>
-			<!-- 		isError -->
-			<!-- 	errorMessage="Please add the product price" -->
 			<Input
 				isTextArea
 				name="shortDescription"
@@ -119,6 +124,9 @@
 				label="Short Description"
 				placeholder="Short Description"
 				max={200}
+				value={form?.description || ''}
+				isError={form?.error_description}
+				errorMessage={form?.error_description}
 			/>
 
 			<MultiSelect
@@ -126,7 +134,7 @@
 				label="Pick the sizes:"
 				name="sizes"
 				choises={sizesChoises}
-				selected={selectedSizes}
+				selected={form?.sizes ?? selectedSizes}
 			/>
 			<Input
 				name="sku"
@@ -134,30 +142,32 @@
 				id="sku"
 				label="SKU:"
 				placeholder="AA000"
-				errorMessage="Please add SKU"
+				value={form?.sku || ''}
+				isError={form?.error_sku}
+				errorMessage={form?.error_sku}
 			/>
 			<MultiSelect
 				id="category"
 				name="categories"
 				label="Choose categories:"
 				choises={categories}
-				selected={selectedCategories}
+				selected={form?.categories ?? selectedCategories}
 			/>
 			<MultiSelect
 				id="tags"
 				name="tags"
 				label="Choose tags:"
 				choises={tags}
-				selected={selectedTags}
+				selected={form?.tags ?? selectedTags}
 			/>
 			<MultiSelect
 				id="colors"
 				name="colors"
 				label="Choose colors:"
 				choises={colors}
-				selected={selectedColors}
+				selected={form?.colors ?? selectedColors}
 			/>
-			<Tiptap name="textContent" />
+			<Tiptap bind:content />
 			<button type="submit" class="btn btn-primary w-100"> Submit </button>
 		</div>
 	</form>

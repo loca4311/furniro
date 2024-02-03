@@ -3,7 +3,7 @@
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
 
-	export let name;
+	export let content = '<p>Add your description here</p>';
 
 	let element: HTMLDivElement;
 	let editor: Editor | null = null;
@@ -13,7 +13,7 @@
 			element: element,
 
 			extensions: [StarterKit],
-			content: '<p>Hello world! 🌍️ </p>',
+			content,
 			onTransaction: () => {
 				editor = editor;
 			}

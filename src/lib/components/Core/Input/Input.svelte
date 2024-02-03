@@ -49,6 +49,7 @@
 					focus-within:ring-1 focus-within:border-primary-500 ring-primary-500
 					focus:ring-primary-500
 					hover:ring-1 hover:border-primary-500 hover:ring-primary-600
+					{isError ? 'border-red-500' : ''}
 				"
 				{type}
 				{id}
@@ -81,7 +82,7 @@
 					focus-within:ring-1 focus-within:border-primary-500 ring-primary-500
 					focus:ring-primary-500
 					hover:ring-1 hover:border-primary-500 hover:ring-primary-600
-					
+					{isError ? 'border-red-500' : ''}
 				"
 				{id}
 				{name}
