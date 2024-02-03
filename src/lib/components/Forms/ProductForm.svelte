@@ -103,10 +103,9 @@
 				id="price"
 				label="Product price in $:"
 				placeholder="Product price"
-				errorMessage="Please add the product price"
-				isError
-				required
 			/>
+			<!-- 		isError -->
+			<!-- 	errorMessage="Please add the product price" -->
 			<Input
 				isTextArea
 				name="shortDescription"
@@ -131,7 +130,6 @@
 				label="SKU:"
 				placeholder="AA000"
 				errorMessage="Please add SKU"
-				required
 			/>
 			<MultiSelect
 				id="category"

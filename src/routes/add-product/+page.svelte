@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { Hero, ProductForm } from '$lib/components';
+	import { Hero, ProductForm, Container } from '$lib/components';
 
-	import Container from '$lib/components/Container.svelte';
+	export let form;
 
 	const pageName = 'Add Product';
 </script>
@@ -14,7 +14,11 @@
 	<div class="relative">
 		<Container>
 			<div class="pt-16 pb-14">
-				<ProductForm />
+				{#if form && form.success}
+					<h2>Form Success</h2>
+				{:else}
+					<ProductForm />
+				{/if}
 			</div>
 		</Container>
 	</div>
