@@ -28,7 +28,7 @@
 		{ value: 'kitchenware', name: 'Kitchenware' }
 	];
 
-	let selectedCategories: string[] = [];
+	let selectedCategories: string[] = ['sofas', 'desks'];
 
 	let tags = [
 		{ value: 'Home', name: 'Home' },
@@ -46,7 +46,7 @@
 		{ value: 'Kitchenware', name: 'Kitcheware' }
 	];
 
-	let selectedTags: string[] = [];
+	let selectedTags: string[] = ['Home', 'Sofa'];
 
 	let colors = [
 		{ value: '#4b0082', name: 'Indigo', color: 'indigo' },
@@ -143,7 +143,6 @@
 				label="Choose colors:"
 				choises={colors}
 				selected={selectedColors}
-				isColored
 			/>
 			<Tiptap />
 		</div>

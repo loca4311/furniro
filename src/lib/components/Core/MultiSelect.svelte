@@ -4,8 +4,7 @@
 	export let id: string;
 	export let label: string;
 	export let name: string;
-	export let isColored = false;
-	export let choises: { value: string; name: string; color: string }[];
+	export let choises: { value: string; name: string }[];
 
 	export let selected: string[];
 </script>
@@ -21,10 +20,10 @@
 		items={choises}
 		bind:value={selected}
 		required
-		let:item
-		let:clear
 	>
 		<!-- <Badge dismissable params={{ duration: 100 }} on:close={clear}>
+			let:item
+			let:clear
 			{item.name}
 		</Badge> -->
 	</MultiSelect>
