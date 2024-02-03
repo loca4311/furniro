@@ -17,7 +17,7 @@
 				{#if form && form.success}
 					<h2>Form Success</h2>
 				{:else}
-					<ProductForm />
+					<ProductForm {form} />
 				{/if}
 			</div>
 		</Container>

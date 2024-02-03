@@ -2,6 +2,8 @@
 	import { MultiSelect, Input, Tiptap } from '$lib/components';
 	import { Input as FlowInput, Label, Helper } from 'flowbite-svelte';
 
+	export let form;
+
 	let isLoading = false;
 
 	let sizesChoises = [
@@ -84,8 +86,11 @@
 				id="productName"
 				label="Product Name"
 				placeholder="Product Name"
-				errorMessage="Please add the product name"
 				disabled={isLoading}
+				value={form?.name || ''}
+				isError={form?.error_name}
+				errorMessage={form?.error_name}
+				class={form?.error_name ?? 'border-red-500'}
 			/>
 			<Input
 				name="productImage"
@@ -117,9 +122,9 @@
 			/>
 
 			<MultiSelect
-				id="size"
+				id="sizes"
 				label="Pick the sizes:"
-				name="size"
+				name="sizes"
 				choises={sizesChoises}
 				selected={selectedSizes}
 			/>
@@ -133,7 +138,7 @@
 			/>
 			<MultiSelect
 				id="category"
-				name="category"
+				name="categories"
 				label="Choose categories:"
 				choises={categories}
 				selected={selectedCategories}
