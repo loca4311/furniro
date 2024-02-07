@@ -1,71 +1,30 @@
 <script lang="ts">
 	import { MultiSelect, Input, Tiptap } from '$lib/components';
-	import { Input as FlowInput, Label, Helper } from 'flowbite-svelte';
+	import ProductContent from '$lib/store/store';
+	import { sizesChoises, categories, tags, colors } from './dropdownParams';
 
 	export let form;
-	let content = '<p>Hello Form</p>';
+	let content;
 
 	console.log(form);
 
-	let isLoading = false;
+	ProductContent.subscribe((data) => {
+		content = data;
+	});
 
-	let sizesChoises = [
-		{ value: 'xs', name: 'XS' },
-		{ value: 's', name: 'S' },
-		{ value: 'm', name: 'M' },
-		{ value: 'l', name: 'L' },
-		{ value: 'xl', name: 'XL' },
-		{ value: 'xxl', name: 'XXL' },
-		{ value: 'XXXL', name: 'XXXL' }
-	];
+	let isLoading = false;
 
 	let selectedSizes = ['m', 'l'];
 
-	let categories = [
-		{ value: 'sofas', name: 'Sofas' },
-		{ value: 'chairs', name: 'Chairs' },
-		{ value: 'tables', name: 'Tables' },
-		{ value: 'desks', name: 'Desks' },
-		{ value: 'lighting', name: 'Lighting' },
-		{ value: 'decoration', name: 'Decoration' },
-		{ value: 'accessories', name: 'Accessories' },
-		{ value: 'outdoor', name: 'Outdoor' },
-		{ value: 'kitchenware', name: 'Kitchenware' }
-	];
-
 	let selectedCategories: string[] = ['sofas', 'desks'];
-
-	let tags = [
-		{ value: 'Home', name: 'Home' },
-		{ value: 'Sofa', name: 'Sofa' },
-		{ value: 'Bed', name: 'Bed' },
-		{ value: 'Dining', name: 'Dining' },
-		{ value: 'Table', name: 'Table' },
-		{ value: 'Desk', name: 'Desk' },
-		{ value: 'Light', name: 'Light' },
-		{ value: 'Round', name: 'Round' },
-		{ value: 'Decoration', name: 'Decoration' },
-		{ value: 'Accessories', name: 'Accessories' },
-		{ value: 'Outdoor', name: 'Outdoor' },
-		{ value: 'Indoor', name: 'Indoor' },
-		{ value: 'Kitchenware', name: 'Kitcheware' }
-	];
 
 	let selectedTags: string[] = ['Home', 'Sofa'];
 
-	let colors = [
-		{ value: '#4b0082', name: 'Indigo', color: 'indigo' },
-		{ value: '#ffffff', name: 'White', color: 'white' },
-		{ value: '#000000', name: 'Black', color: 'dark' },
-		{ value: '#ff0000', name: 'Red', color: 'red' },
-		{ value: '#00ff00', name: 'Green', color: 'green' },
-		{ value: '#0000ff', name: 'Blue', color: 'blue' },
-		{ value: '#8c534b', name: 'Grey', color: 'dark' },
-		{ value: '#e67d2f', name: 'Orange', color: 'orange' },
-		{ value: '#ffff00', name: 'Yellow', color: 'yellow' }
-	];
-
 	let selectedColors: string[] = ['#ff0000', '#00ff00', '#0000ff'];
+
+	ProductContent.update(() => {
+		return form?.content ?? 'Helo';
+	});
 </script>
 
 <div
@@ -167,7 +126,9 @@
 				choises={colors}
 				selected={form?.colors ?? selectedColors}
 			/>
-			<Tiptap bind:content />
+			<Tiptap />
+
+			<input type="text" name="content" value={content} />
 			<button type="submit" class="btn btn-primary w-100"> Submit </button>
 		</div>
 	</form>
