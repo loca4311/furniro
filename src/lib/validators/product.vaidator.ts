@@ -31,7 +31,7 @@ export default async function validate(formData) {
 		price: parseFloat(formData.get('price')) || null,
 		description: formData.get('shortDescription'),
 		sku: formData.get('sku'),
-		image: formData.get('image'),
+		image: emptyFileIsNull(formData.get('main_picture')),
 		sizes: formData.getAll('sizes'),
 		categories: formData.getAll('categories'),
 		tags: formData.getAll('tags') ?? [],
@@ -40,8 +40,6 @@ export default async function validate(formData) {
 	};
 
 	try {
-		console.log(data);
-
 		await schema.validate(data, { abortEarly: false });
 
 		return { success: true, product: data };
@@ -53,36 +51,16 @@ export default async function validate(formData) {
 			return agg;
 		}, {});
 
-		//	delete data.image;
+		delete data.image;
 
 		return { ...errors, ...data, success: false };
 	}
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-// content: yup.string().custom((value) => {
-// 	if (!value) {
-// 		return 'Content is required';
-// 	}
+function emptyFileIsNull(file) {
+	if (file.size === 0) {
+		return null;
+	}
 
-// 	// eslint-disable-next-line @typescript-eslint/no-var-requires
-// 	const { createEditor } = require('@tiptap/core');
-// 	// eslint-disable-next-line @typescript-eslint/no-var-requires
-// 	const { default: Document } = require('@tiptap/extension-document');
-// 	// eslint-disable-next-line @typescript-eslint/no-var-requires
-// 	const { default: Paragraph } = require('@tiptap/extension-paragraph');
-// 	// eslint-disable-next-line @typescript-eslint/no-var-requires
-// 	const { default: Text } = require('@tiptap/extension-text');
-
-// 	const editor = createEditor({
-// 		extensions: [Document, Paragraph, Text]
-// 	});
-
-// 	const document = editor.createDocument({ content: value });
-
-// 	if (document.textContent.length < 10) {
-// 		return 'Content should have at least 10 characters';
-// 	}
-
-// 	return true;
-// })
+	return file;
+}

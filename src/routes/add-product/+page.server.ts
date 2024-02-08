@@ -10,7 +10,8 @@ export const actions = {
 		}
 
 		return {
-			success: true
+			success: true,
+			data
 		};
 	}
 };
