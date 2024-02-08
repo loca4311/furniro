@@ -1,3 +1,4 @@
+import { addProduct } from '$lib/firebase/database.server';
 import validateBook from '$lib/validators/product.vaidator';
 import { fail } from '@sveltejs/kit';
 
@@ -9,9 +10,8 @@ export const actions = {
 			return fail(422, data);
 		}
 
-		return {
-			success: true,
-			data
-		};
+		const productId = await addProduct(data, locals.user.id);
+
+		throw redirect(303, `/products/${productId}`);
 	}
 };

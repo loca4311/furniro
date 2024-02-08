@@ -17,6 +17,8 @@
 	let selectedColors: string[] = ['#ff0000', '#00ff00', '#0000ff'];
 
 	ProductContent.set(form?.content ?? '');
+
+	// value={form?.image || ''}
 </script>
 
 <div
@@ -52,7 +54,6 @@
 					id="main_picture"
 					accept="image/*"
 					name="main_picture"
-					value={form?.image || ''}
 					class:is-invalid={form?.error_image}
 					type="file"
 				/>
