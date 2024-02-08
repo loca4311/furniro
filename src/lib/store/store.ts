@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
 
-const ProductContent = writable('<p>Hello Form</p> ');
+const ProductContent = writable('');
 
 export default ProductContent;

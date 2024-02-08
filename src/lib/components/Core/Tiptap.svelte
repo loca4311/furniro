@@ -4,8 +4,8 @@
 	import StarterKit from '@tiptap/starter-kit';
 	import ProductContent from '$lib/store/store';
 
-	export let currentContent = '<p>Add your description here</p>';
-	export let html = '';
+	export let currentContent = '';
+	export let editorContent: string = '';
 
 	let element: HTMLDivElement;
 	let editor: Editor | null = null;
@@ -27,10 +27,8 @@
 	});
 
 	afterUpdate(() => {
-		html = editor?.getHTML();
-		ProductContent.update(() => {
-			return html;
-		});
+		editorContent = editor?.getHTML();
+		ProductContent.set(editorContent);
 	});
 
 	onDestroy(() => {
@@ -149,6 +147,7 @@
 	/* Basic editor styles */
 	button.active {
 		background-color: black;
+		color: #fff;
 	}
 
 	.tiptap {

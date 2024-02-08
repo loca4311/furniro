@@ -3,11 +3,13 @@
 
 	export let form;
 
+	console.log(form);
+
 	const pageName = 'Add Product';
 </script>
 
 <svele:head>
-	<title>{pageName} | Futnio</title>
+	<title>{pageName} | Furnio</title>
 </svele:head>
 <Hero name={pageName} />
 <section class="add-product">

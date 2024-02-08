@@ -4,13 +4,9 @@
 	import { sizesChoises, categories, tags, colors } from './dropdownParams';
 
 	export let form;
-	let content;
+	$: content = $ProductContent;
 
 	console.log(form);
-
-	ProductContent.subscribe((data) => {
-		content = data;
-	});
 
 	let isLoading = false;
 
@@ -22,9 +18,7 @@
 
 	let selectedColors: string[] = ['#ff0000', '#00ff00', '#0000ff'];
 
-	ProductContent.update(() => {
-		return form?.content ?? 'Helo';
-	});
+	ProductContent.set(form?.content ?? '');
 </script>
 
 <div
@@ -53,18 +47,57 @@
 				isError={form?.error_name}
 				errorMessage={form?.error_name}
 			/>
-			<Input
-				name="productImage"
-				type="file"
-				id="productImage"
-				label="Product Image"
-				placeholder="Product Image"
-				disabled={isLoading}
-				accept="image/*"
-				value={form?.image || undefined}
-				isError={form?.error_image}
-				errorMessage={form?.error_image}
-			/>
+			<div class="mb-3">
+				<label for="main_picture" class="form-label">Main Book Picture</label>
+				<input
+					class="form-control form-control-lg"
+					id="main_picture"
+					accept="image/*"
+					name="main_picture"
+					value={form?.image || ''}
+					class:is-invalid={form?.error_image}
+					type="file"
+				/>
+				{#if form?.error_image}
+					<span class=" mt-0.5 font-light text-red-500">{form?.error_image}</span>
+				{/if}
+			</div>
+			<!-- <div>
+				<label
+					class="
+						flex flex-col items-start
+					"
+				>
+					<span
+						class=" text-base font-normal text-black mb-[1.375rem]"
+						class:!text-surface-700={form?.error_image}
+					>
+						Product Image
+					</span>
+					<input
+						class="
+						w-full
+						py-4 px-4
+						lg:py-[1.625rem] lg:px-[1.875rem]
+						text-base text-black
+						border border-[#9F9F9F] rounded-lg
+						focus-within:ring-1 focus-within:border-primary-500 ring-primary-500
+						focus:ring-primary-500
+						hover:ring-1 hover:border-primary-500 hover:ring-primary-600
+						{form?.error_image ? 'border-red-500' : ''}
+					"
+						type="file"
+						id="image"
+						name="image"
+						value={form?.image || ''}
+						accept="image/*"
+					/>
+
+					{#if form?.error_image}
+						<span class=" mt-0.5 font-light text-red-500">{form?.error_image}</span>
+					{/if}
+				</label>
+			</div> -->
 			<Input
 				name="price"
 				type="number"
