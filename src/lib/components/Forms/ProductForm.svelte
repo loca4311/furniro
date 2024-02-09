@@ -17,8 +17,6 @@
 	let selectedColors: string[] = ['#ff0000', '#00ff00', '#0000ff'];
 
 	ProductContent.set(form?.content ?? '');
-
-	// value={form?.image || ''}
 </script>
 
 <div
