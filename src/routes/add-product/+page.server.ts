@@ -10,13 +10,13 @@ export const actions = {
 			return fail(422, data);
 		}
 
-		console.log(data);
+		//	console.log(data);
 
 		// const productId = await addProduct(data.product, locals.user.id);
 		// console.log(productId);
-		const productSLug = await addProduct(data.product, locals.user.id);
-		console.log(productSLug);
+		const productSlug = await addProduct(data.product, locals.user.id);
+		console.log(productSlug);
 
-		throw redirect(303, `/products/${productSLug}`);
+		throw redirect(303, `/products/${productSlug}`);
 	}
 };

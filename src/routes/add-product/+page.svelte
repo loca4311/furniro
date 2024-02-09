@@ -4,7 +4,7 @@
 
 	export let form: Product;
 
-	console.log(form);
+	//	console.log(form);
 
 	const pageName = 'Add Product';
 </script>
