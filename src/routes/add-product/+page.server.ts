@@ -12,9 +12,11 @@ export const actions = {
 
 		console.log(data);
 
-		const productId = await addProduct(data.product, locals.user.id);
-		console.log(productId);
+		// const productId = await addProduct(data.product, locals.user.id);
+		// console.log(productId);
+		const productSLug = await addProduct(data.product, locals.user.id);
+		console.log(productSLug);
 
-		throw redirect(303, `/products/${productId}`);
+		throw redirect(303, `/products/${productSLug}`);
 	}
 };
