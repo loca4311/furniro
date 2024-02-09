@@ -14,7 +14,7 @@
 	export let autocomplete = '';
 	export let isTextArea = false;
 	export let isFocused = false;
-	export let isError = false;
+	export let isError: string | boolean = false;
 	export let disabled = false;
 	export let outerClass = '';
 	export let accept: string = '';

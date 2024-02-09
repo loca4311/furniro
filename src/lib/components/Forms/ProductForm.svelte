@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { MultiSelect, Input, Tiptap } from '$lib/components';
 	import ProductContent from '$lib/store/store';
+	import type { Product } from '$lib/types';
 	import { sizesChoises, categories, tags, colors } from './dropdownParams';
 
-	export let form;
+	export let form: Product;
 	$: content = $ProductContent;
 
 	let isLoading = false;

@@ -1,6 +1,4 @@
 import { db } from '$lib/firebase/firebase.server';
-// import { serverTimestamp } from 'firebase/firestore';
-// import { firestore } from 'firebase-admin';
 import firebaseAdmin from 'firebase-admin';
 const { firestore } = firebaseAdmin;
 import { saveFileToBucket } from './firestorage.server';

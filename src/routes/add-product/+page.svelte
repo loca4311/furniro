@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { Hero, ProductForm, Container } from '$lib/components';
+	import type { Product } from '$lib/types';
 
-	export let form;
+	export let form: Product;
 
 	console.log(form);
 
