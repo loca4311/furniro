@@ -6,7 +6,7 @@ import yup from 'yup';
 export default async function validate(formData) {
 	const schema = yup.object({
 		name: yup.string().required().min(4).max(160),
-		price: yup.number().required().positive('Prise must be a positive number'),
+		price: yup.number().required().positive('Price must be a positive number'),
 		description: yup.string().required().min(10).max(300),
 		sku: yup.string().required().min(4).max(10),
 		image: yup

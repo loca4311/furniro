@@ -33,7 +33,7 @@
 	<div class="mb-9">
 		<h2 class="font-semibold text-4xl text-black">Product Details</h2>
 	</div>
-	<form method="POST">
+	<form enctype="multipart/form-data" method="POST">
 		<div class=" space-y-9">
 			<!-- Input here -->
 			<Input
@@ -54,8 +54,8 @@
 					id="main_picture"
 					accept="image/*"
 					name="main_picture"
-					class:is-invalid={form?.error_image}
 					type="file"
+					value={form?.image || ''}
 				/>
 				{#if form?.error_image}
 					<span class=" mt-0.5 font-light text-red-500">{form?.error_image}</span>
