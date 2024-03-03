@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { MultiSelect, Input, Tiptap } from '$lib/components';
+	import { MultiSelect, Input, Tiptap, Button } from '$lib/components';
 	import ProductContent from '$lib/store/store';
 	import type { Product } from '$lib/types';
 	import { sizesChoises, categories, tags, colors } from './dropdownParams';
@@ -123,8 +123,9 @@
 			/>
 			<Tiptap />
 
-			<input type="text" name="content" value={content} />
-			<button type="submit" class="btn btn-primary w-100"> Submit </button>
+			<input class="hidden" type="text" name="content" value={content} />
+			<!-- <button type="submit" class="btn btn-primary w-100"> Submit </button> -->
+			<Button class="w-full" size="large">BUY NOW</Button>
 		</div>
 	</form>
 </div>
