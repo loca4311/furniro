@@ -11,7 +11,12 @@
 		<Container>
 			<div class="home-hero_component pt-[9.8125rem] pb-[7.25rem] flex flex-col items-end">
 				<div
-					class="home-hero_content bg-golden-500 pt-[3.875rem] pb-[2.3125rem] pl-[2.5625rem] pr-[2.6875rem] rounded-[0.625rem] max-w-[40.1875rem]"
+					class="
+						home-hero_content bg-golden-500
+						pt-[3.875rem] pb-[2.3125rem] pl-[2.5625rem] pr-[2.6875rem]
+						rounded-[0.625rem] max-w-[40.1875rem]
+						flex flex-col items-start
+					"
 				>
 					<div class="mb-1">
 						<span class="text-gray-900 text-base font-semibold tracking-[0.1875rem]">
@@ -27,7 +32,7 @@
 							ullamcorper mattis.
 						</p>
 					</div>
-					<Link variant={'outline'} href={EPages.SHOP}>BUY NOW</Link>
+					<Link variant={'filled'} size="large" href={EPages.SHOP}>BUY NOW</Link>
 				</div>
 			</div>
 		</Container>
