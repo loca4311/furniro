@@ -124,7 +124,6 @@
 			<Tiptap />
 
 			<input class="hidden" type="text" name="content" value={content} />
-			<!-- <button type="submit" class="btn btn-primary w-100"> Submit </button> -->
 			<Button class="w-full" size="large">BUY NOW</Button>
 		</div>
 	</form>
